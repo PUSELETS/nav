@@ -12,7 +12,7 @@ const [ref, { height }] = useMeasure()
 
   return (
     <MotionConfig transition={{duration: 0.3}}>
-      <main className=" flex justify-between sm:items-center bg-green-200 text-black flex-col items-start sm:flex-row w-full ">
+      <div className=" flex justify-between sm:items-center bg-green-200 text-black flex-col items-start sm:flex-row w-full sticky ">
         <h3 className='text-2xl m-2'>Food</h3>
         <section
           onClick={() => {
@@ -28,11 +28,11 @@ const [ref, { height }] = useMeasure()
           className='overflow-hidden w-full p-1 py-1'
         >
           <ul ref={ref} className={`${menuNav ? 'flex' : 'hidden'} m-0 p-0 sm:flex flex-col sm:flex-row w-full bg-green-200 justify-center items-center overflow-hidden`}>
-            <li className='list-none hover:bg-green-100 text-center w-full rounded-lg '><Link className='no-underline text-black p-4 block' href={'/'}>FRUITS</Link></li>
-            <li className='list-none hover:bg-green-100 text-center w-full rounded-lg'><Link className='no-underline text-black p-4 block' href={'/'}>VAGETABLES</Link></li>
-            <li className='list-none hover:bg-green-100 text-center w-full rounded-lg'><Link className='no-underline text-black p-4 block' href={'/'}>NUDDLES</Link></li>
-            <li className='list-none hover:bg-green-100 text-center w-full rounded-lg'><Link className='no-underline text-black p-4 block' href={'/'}>BURGAR</Link></li>
-            <li className='list-none hover:bg-green-100 text-center w-full rounded-lg'><Link className='no-underline text-black p-4 block' href={'/'}>BEEF</Link></li>
+            <li className='list-none hover:bg-blue-200 text-center w-full rounded-lg '><Link className='no-underline text-black p-4 block' href={'/'}>FRUITS</Link></li>
+            <li className='list-none hover:bg-blue-200 text-center w-full rounded-lg'><Link className='no-underline text-black p-4 block' href={'/'}>VAGETABLES</Link></li>
+            <li className='list-none hover:bg-blue-200 text-center w-full rounded-lg'><Link className='no-underline text-black p-4 block' href={'/'}>NUDDLES</Link></li>
+            <li className='list-none hover:bg-blue-200 text-center w-full rounded-lg'><Link className='no-underline text-black p-4 block' href={'/'}>BURGAR</Link></li>
+            <li className='list-none hover:bg-blue-100 text-center w-full rounded-lg'><Link className='no-underline text-black p-4 block' href={'/'}>BEEF</Link></li>
             <div
               onClick={() => {
                 setMenuNav(!menuNav)
@@ -44,7 +44,7 @@ const [ref, { height }] = useMeasure()
             </div>
           </ul>
         </motion.div>
-      </main>
+      </div>
     </MotionConfig>
   )
 }
