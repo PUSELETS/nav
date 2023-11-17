@@ -5,7 +5,7 @@ import './globals.css'
 
 const inter = Roboto_Serif({
   subsets: ['latin'] ,
-  weight: '400'
+  weight: '600'
 })
 
 export const metadata = {
