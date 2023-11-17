@@ -12,7 +12,7 @@ export default function Home() {
 
   return (
     <MotionConfig transition={{duration: 0.5}}>
-      <main className=" flex justify-between sm:items-center bg-yellow-200 text-black flex-col items-start sm:flex-row w-full">
+      <main className=" flex justify-between sm:items-center bg-green-200 text-black flex-col items-start sm:flex-row w-full">
         <h3 className='text-2xl m-2'>Food</h3>
         <section
           onClick={() => {
@@ -27,11 +27,11 @@ export default function Home() {
           animate={{ height }}
         >
           <ul ref={ref} className={`${menuNav ? 'flex' : 'hidden'} m-0 p-0 sm:flex flex-col sm:flex-row w-full fixed top-0 right-0 h-screen bg-green-200 justify-center items-center overflow-hidden`}>
-            <li className='list-none hover:bg-yellow-100 text-center'><Link className='no-underline text-black p-4 block' href={'/'}>Fruits</Link></li>
-            <li className='list-none hover:bg-yellow-100 text-center'><Link className='no-underline text-black p-4 block' href={'/'}>Vagetable</Link></li>
-            <li className='list-none hover:bg-yellow-100 text-center'><Link className='no-underline text-black p-4 block' href={'/'}>Nuddles</Link></li>
-            <li className='list-none hover:bg-yellow-100 text-center'><Link className='no-underline text-black p-4 block' href={'/'}>Bugger</Link></li>
-            <li className='list-none hover:bg-yellow-100 text-center'><Link className='no-underline text-black p-4 block' href={'/'}>Beef</Link></li>
+            <li className='list-none hover:bg-green-100 text-center'><Link className='no-underline text-black p-4 block' href={'/'}>FRUITS</Link></li>
+            <li className='list-none hover:bg-green-100 text-center'><Link className='no-underline text-black p-4 block' href={'/'}>VAGETABLES</Link></li>
+            <li className='list-none hover:bg-green-100 text-center'><Link className='no-underline text-black p-4 block' href={'/'}>NUDDLES</Link></li>
+            <li className='list-none hover:bg-green-100 text-center'><Link className='no-underline text-black p-4 block' href={'/'}>BURGAR</Link></li>
+            <li className='list-none hover:bg-green-100 text-center'><Link className='no-underline text-black p-4 block' href={'/'}>BEEF</Link></li>
             <div
               onClick={() => {
                 setMenuNav(!menuNav)
