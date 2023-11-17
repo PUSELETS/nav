@@ -15,15 +15,19 @@ export default function Gesture() {
 
 function ImageCropper ({src}) {
 
-    const [crop, setCrop] = useState({x: 0, y: 0})
+    const [crop, setCrop] = useState({x: 0, y: 0, scale: 2})
     const imageRef = useRef()
 
     useGesture({
         onDrag: ({offset: [dx, dy]})=> {
-            setCrop({x: dx, y: dy})
+            setCrop((crop)=>({...crop, x: dx, y: dy}));
         }, 
+        onPinch: ({offset: [d]})=> {
+            setCrop((crop)=>({...crop, scale:1 + d / 50}));
+        },
     },{
-        target : imageRef
+        target : imageRef,
+        eventOptions: {passive: false}, 
     });
 
     return (
@@ -36,6 +40,8 @@ function ImageCropper ({src}) {
                 style={{
                     left: crop.x,
                     top: crop.y,
+                    transform: `scale(${crop.scale})`,
+                    touchAction: "none",
                 }}
                 className='relative object-contain w-auto h-full max-w-none max-h-none'
                 />
