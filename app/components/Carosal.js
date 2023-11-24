@@ -1,7 +1,8 @@
 "use client"
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import useMeasure from 'react-use-measure';
+import { useGesture } from '@use-gesture/react';
 
 const color = [
     "bg-red-500",
@@ -13,6 +14,7 @@ const color = [
 
 export default function Carosal() {
 
+    const [slide, setSlide] = useState({x: 10})
     const [count, setCount] = useState(1);
     const [ref, {width}] = useMeasure();
     const [tuple, setTuple] = useState([null, count]);
@@ -24,6 +26,15 @@ export default function Carosal() {
     const prev = tuple[0];
 
     const direction = count > prev ? 1 : -1;
+
+    const carosal = useRef()
+    useGesture({
+        onDrag: ({offset: [dx]})=>{
+            setSlide({x: dx})
+        },
+    }, {
+        target: carosal
+    })
 
     return (
         <div className='text-white'>
@@ -41,9 +52,14 @@ export default function Carosal() {
                             animate='center'
                             exit='exit'
                             custom={{direction, width}}
+                            style={{left: slide.x}}
+                            ref={carosal}
                             className={`absolute h-20 w-20 flex justify-center items-center ${color[Math.abs(count) % 4]}`}>{count}</motion.div>
                     </AnimatePresence>
                 </div>
+            </div>
+            <div>
+                <p>slide x: {slide.x}</p>
             </div>
         </div>
     )

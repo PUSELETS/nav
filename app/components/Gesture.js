@@ -43,7 +43,7 @@ function ImageCropper ({src}) {
                     transform: `scale(${crop.scale})`,
                     touchAction: "none",
                 }}
-                className='relative object-contain w-auto h-full max-w-none max-h-none'
+                className='relative object-contain w-full h-full max-w-none max-h-none'
                 />
             </div>
         </div>
