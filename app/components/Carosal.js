@@ -43,7 +43,7 @@ export default function Carosal() {
                 <button onClick={() => setCount(count + 1)}>Next</button>
             </div>
             <div className='mt-8 flex justify-center'>
-                <div ref={ref} className='relative flex h-24 w-24 items-center justify-center bg-gray-700 overflow-hidden'>
+                <div ref={ref} className='relative flex h-44 w-44 items-center justify-center bg-gray-700 overflow-hidden'>
                     <AnimatePresence custom={{direction, width}}>
                         <motion.div
                             key={count}
@@ -54,7 +54,7 @@ export default function Carosal() {
                             custom={{direction, width}}
                             style={{left: slide.x}}
                             ref={carosal}
-                            className={`absolute h-20 w-20 flex justify-center items-center ${color[Math.abs(count) % 4]}`}>{count}</motion.div>
+                            className={`absolute h-40 w-40 flex justify-center items-center ${color[Math.abs(count) % 4]}`}>{count}</motion.div>
                     </AnimatePresence>
                 </div>
             </div>
