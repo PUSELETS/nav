@@ -1,5 +1,5 @@
 "use client"
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import useMeasure from 'react-use-measure';
 import { useGesture } from '@use-gesture/react';
@@ -14,7 +14,7 @@ const color = [
 
 export default function Carosal() {
 
-    const [slide, setSlide] = useState({x: 10})
+    const [slide, setSlide] = useState({x: 8})
     const [count, setCount] = useState(1);
     const [ref, {width}] = useMeasure();
     const [tuple, setTuple] = useState([null, count]);
@@ -27,14 +27,26 @@ export default function Carosal() {
 
     const direction = count > prev ? 1 : -1;
 
-    const carosal = useRef()
+    const carosal = useRef();
+    const carosalContainer = useRef();
     useGesture({
         onDrag: ({offset: [dx]})=>{
             setSlide({x: dx})
         },
-    }, {
-        target: carosal
-    })
+        onDragEnd: ()=> {
+            const newSlide = slide;
+            const carosalBound = carosal.current.getBoundingClientRect();
+            const containerBound = carosalContainer.current.getBoundingClientRect();
+
+            if(carosalBound.left > containerBound.left){
+                newSlide.x = 8
+            }
+            setSlide(newSlide);
+        }
+    },
+    )
+
+ 
 
     return (
         <div className='text-white'>
@@ -43,7 +55,7 @@ export default function Carosal() {
                 <button onClick={() => setCount(count + 1)}>Next</button>
             </div>
             <div className='mt-8 flex justify-center'>
-                <div ref={ref} className='relative flex h-44 w-44 items-center justify-center bg-gray-700 overflow-hidden'>
+                <div ref={[ref,carosalContainer ]} className='relative flex h-44 w-44 items-center justify-center bg-gray-700 overflow-hidden'>
                     <AnimatePresence custom={{direction, width}}>
                         <motion.div
                             key={count}
