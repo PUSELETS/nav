@@ -55,7 +55,7 @@ export default function Carosal() {
                 <button onClick={() => setCount(count + 1)}>Next</button>
             </div>
             <div className='mt-8 flex justify-center'>
-                <div ref={[ref,carosalContainer ]} className='relative flex h-44 w-44 items-center justify-center bg-gray-700 overflow-hidden'>
+                <div ref={ref} className='relative flex h-44 w-44 items-center justify-center bg-gray-700 overflow-hidden'>
                     <AnimatePresence custom={{direction, width}}>
                         <motion.div
                             key={count}
